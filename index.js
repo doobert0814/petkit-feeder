@@ -31,30 +31,6 @@ const support_settings = Object.freeze({
 });
 
 const global_urls = Object.freeze({
-    'cn': {
-        'owndevices': 'http://api.petkit.cn/6/discovery/device_roster',
-        'deviceState': 'http://api.petkit.cn/6/feedermini/devicestate?id={}',
-        'deviceDetail': 'http://api.petkit.cn/6/feedermini/device_detail?id={}',
-        'saveDailyFeed': 'http://api.petkit.cn/6/feedermini/save_dailyfeed?deviceId={}&day={}&time={}&amount={}',
-        'removeDailyFeed': 'http://api.petkit.cn/6/feedermini/remove_dailyfeed?deviceId={}&day={}&id=d{}',
-        'dailyfeeds': 'http://api.petkit.cn/6/feedermini/dailyfeeds?deviceId={}&days={}',
-        'restoreDailyFeeds': 'http://api.petkit.cn/6/feedermini/restore_dailyfeed?deviceId={}&day={}&id=s{}',
-        'disableDailyFeeds': 'http://api.petkit.cn/6/feedermini/remove_dailyfeed?deviceId={}&day={}&id=s{}',
-        'resetDesiccant': 'http://api.petkit.cn/6/feedermini/desiccant_reset?deviceId={}',
-        'updateSettings': 'http://api.petkit.cn/6/feedermini/update?id={}&kv={}',
-    },
-    'asia':{
-        'owndevices': 'http://api.petktasia.com/latest/discovery/device_roster',
-        'deviceState': 'http://api.petktasia.com/latest/feedermini/devicestate?id={}',
-        'deviceDetail': 'http://api.petktasia.com/latest/feedermini/device_detail?id={}',
-        'saveDailyFeed': 'http://api.petktasia.com/latest/feedermini/save_dailyfeed?deviceId={}&day={}&time={}&amount={}',
-        'removeDailyFeed': 'http://api.petktasia.com/latest/feedermini/remove_dailyfeed?deviceId={}&day={}&id=d{}',
-        'dailyfeeds': 'http://api.petktasia.com/latest/feedermini/dailyfeeds?deviceId={}&days={}',
-        'restoreDailyFeeds': 'http://api.petktasia.com/latest/feedermini/restore_dailyfeed?deviceId={}&day={}&id=s{}',
-        'disableDailyFeeds': 'http://api.petktasia.com/latest/feedermini/remove_dailyfeed?deviceId={}&day={}&id=s{}',
-        'resetDesiccant': 'http://api.petktasia.com/latest/feedermini/desiccant_reset?deviceId={}',
-        'updateSettings': 'http://api.petktasia.com/latest/feedermini/update?id={}&kv={}',
-    },
     'north_america':{
         'owndevices': 'http://api.petkt.com/latest/discovery/device_roster',
         'deviceState': 'http://api.petkt.com/latest/feeder/devicestate?id={}',
@@ -85,7 +61,7 @@ module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     api = homebridge;
-    homebridge.registerAccessory('homebridge-petkit-feeder-mini', 'petkit_feeder_mini', petkit_feeder_mini_plugin);
+    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'petkit_feeder_fresh-element', petkit_feeder_fresh_element_plugin);
 }
 
 function getTimestamp() {
@@ -100,7 +76,7 @@ function getConfigValue(original, default_value) {
     return (original !== undefined ? original : default_value);
 }
 
-class petkit_feeder_mini_plugin {
+class petkit_feeder_fresh_element_plugin {
     constructor(log, config) {
         this.log = log;
         this.headers = {};
@@ -120,7 +96,7 @@ class petkit_feeder_mini_plugin {
             'meals': {}
         };
 
-        this.log('begin to initialize petkit feeder mini.');
+        this.log('begin to initialize petkit feeder fresh element.');
 
         // location
         if (!config['location'] || !global_urls[config['location']]) {
@@ -157,11 +133,11 @@ class petkit_feeder_mini_plugin {
         this.storagedConfig = this.readStoragedConfigFromFile();
 
         // device information settings
-        this.name = getConfigValue(config['name'], 'PetkitFeederMini');
-        this.serialNumber = getConfigValue(config['sn'], 'PetkitFeederMini');
+        this.name = getConfigValue(config['name'], 'PetkitFeeder');
+        this.serialNumber = getConfigValue(config['sn'], 'PetkitFeeder');
         this.firmware = getConfigValue(config['firmware'], getConfigValue(packageConfig['version'], '1.0.0'));
         this.manufacturer = getConfigValue(config['manufacturer'], 'Petkit');
-        this.model = getConfigValue(config['model'], 'Petkit feeder mini');
+        this.model = getConfigValue(config['model'], 'Petkit feeder fresh element');
 
         this.autoDeviceInfo = getConfigValue(config['autoDeviceInfo'], false);
         if (this.autoDeviceInfo && this.dePromise(this.http_getDeviceInfo())) {

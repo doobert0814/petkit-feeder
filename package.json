@@ -1,38 +1,30 @@
 {
-    "name": "homebridge-petkit-feeder-mini",
+    "name": "petkit-feeder-fresh-element",
     "version": "1.10.3",
-    "description": "control your petkit feeder mini to feed your lovely pet.",
+    "description": "control feeder",
     "main": "index.js",
-    "scripts": {
-      "test-homebridge": "/usr/bin/homebridge -P ./ -I -U /var/lib/homebridge",
-      "test": "echo Ok."
-    },
     "keywords": [
-      "petkit",
-      "feeder",
-      "homebridge",
-      "homebridge-plugin"
+        "petkit",
+        "feeder",
+        "homebridge",
+        "homebridge-plugin"
     ],
     "engines": {
-      "homebridge": ">=0.4.45",
-      "node": ">=12.0.0"
+        "homebridge": ">=1.1.0",
+        "node": ">=15.0.1"
     },
-    "author": "elfive@elfive.cn",
-    "license": "Apache-2.0",
+    "author": "scot@scotsexton.com",
+    "license": "A",
     "dependencies": {
-      "axios": "^0.21.1",
-      "dayjs": "^1.10.3",
-      "deasync-promise": "^1.0.1",
-      "event": "^1.0.0",
-      "polling-to-event": "^2.1.0",
-      "string-format": "^2.0.0"
+        "axios": "^0.21.1",
+        "dayjs": "^1.10.3",
+        "deasync-promise": "^1.0.1",
+        "event": "^1.0.0",
+        "polling-to-event": "^2.1.0",
+        "string-format": "^2.0.0"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/elfive/homebridge-petkit-feeder-mini.git"
-    },
-    "bugs": {
-      "url": "https://github.com/elfive/homebridge-petkit-feeder-mini/issues"
-    },
-    "homepage": "https://github.com/elfive/homebridge-petkit-feeder-mini#readme"
-  }
+        "type": "git",
+        "url": "git+https://github.com/doobert0814/petkit-feeder.git"
+    }
+}

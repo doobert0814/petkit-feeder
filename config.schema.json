@@ -1,7 +1,7 @@
 {
-    "pluginAlias": "petkit_feeder_mini",
+    "pluginAlias": "petkit-feeder-fresh-element",
     "pluginType": "accessory",
-    "headerDisplay": "For documentation please see https://github.com/elfive/homebridge-petkit-feeder-mini",
+    "headerDisplay": "",
     "footerDisplay": "",
     "schema": {
         "name": {
@@ -63,11 +63,11 @@
         },
         "location": {
             "title": "Server location, set this value corrent is very important becaus user data are not shared between servers.!",
-            "description": "• for China mainland users, select 'China mainland'.<br/>• for Asia users select 'Asia'.<br/>• for North America users select 'North America'",
+            "description": "",
             "required": true,
             "type": "string",
-            "default": "cn",
-            "placeholder": "China mainland",
+            "default": "north_america",
+            "placeholder": "North America",
             "oneOf": [
                 { "title": "China mainland", "enum": ["cn"] },
                 { "title": "Asia", "enum": ["asia"] },
@@ -110,8 +110,8 @@
                             "source": [
                                 "gzip, deflate",
                                 "application/x-www-form-urlencoded",
-                                "PETKIT/7.18.1 (iPhone; iOS 14.0; Scale/3.00)",
-                                "Asia/Shanghai",
+                                "PETKIT/7.24.0 (iPhone; iOS 14.5; Scale/3.00)",
+                                "America/Los_Angeles",
                                 "en_US"
                             ]
                         }
@@ -138,8 +138,8 @@
             "description": "If autoDeviceInfo is set to true, it will overwrited with the SN of your device.",
             "required": false,
             "type": "string",
-            "default": "PetkitFeederMini",
-            "placeholder": "PetkitFeederMini"
+            "default": "PetkitFeederFreshElement",
+            "placeholder": "PetkitFeederFreshElement"
         },
         "firmware": {
             "title": "Firmware version shows in homekit app",
@@ -162,7 +162,7 @@
             "description": "The model of your device.",
             "required": false,
             "type": "string",
-            "default": "Petkit feeder mini",
+            "default": "Petkit Feeder Fresh Element",
             "placeholder": "1.0.0"
         },
         "enable_polling": {
