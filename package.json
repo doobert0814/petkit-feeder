@@ -1,7 +1,7 @@
 {
-    "name": "petkit-feeder-fresh-element",
-    "version": "1.10.3",
-    "description": "control feeder",
+    "name": "homebridge-petkit-feeder-fresh-element",
+    "version": "1.0.0",
+    "description": "wirelessly feed your pet",
     "main": "index.js",
     "keywords": [
         "petkit",
