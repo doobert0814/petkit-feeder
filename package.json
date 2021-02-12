@@ -6,12 +6,13 @@
     "keywords": [
         "petkit",
         "feeder",
+        "fresh-element",
         "homebridge",
         "homebridge-plugin"
     ],
     "engines": {
-        "homebridge": ">=1.1.0",
-        "node": ">=15.0.1"
+        "homebridge": ">=0.5.0",
+        "node": ">=11.0.1"
     },
     "author": "scot@scotsexton.com",
     "license": "A",
