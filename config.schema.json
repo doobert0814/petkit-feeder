@@ -9,8 +9,8 @@
             "description": "If autoDeviceInfo is set to true, it will overwrited with the name in your Petkit app.<br/>We don't need it, but homebridge need it.",
             "required": true,
             "type": "string",
-            "default": "PetkitFeederMini",
-            "placeholder": "PetkitFeederMini"
+            "default": "PetkitFeederFreshElement",
+            "placeholder": "PetkitFeederFreshElement"
         },
         "DropMeal_name": {
             "title": "DropMeal Service name shows in HomeKit",
@@ -120,7 +120,7 @@
             }
         },
         "deviceId": {
-            "title": "Petkit feeder mini Device ID",
+            "title": "Petkit feeder Device ID",
             "description": "Buildin your device, will never change.If you just have one Petkit feeder mini, you can ignore this value.",
             "required": false,
             "type": "string"
