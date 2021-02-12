@@ -16,7 +16,7 @@ const default_headers = Object.freeze({
     'X-Client': 'ios(14.5;iPhone12,3)',
     'Accept': '*/*',
     'X-Timezone': '-8.0',
-    'Accept-Language': 'en-US;q=1, zh-Hans-US;q=0.9',
+    'Accept-Language': 'en-US;q=1',
     'Accept-Encoding': 'gzip, deflate',
     'X-Api-Version': '7.24.0',
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -61,7 +61,7 @@ module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     api = homebridge;
-    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'petkit_feeder_fresh-element', petkit_feeder_fresh_element_plugin);
+    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'homebridge-petkit_feeder_fresh-element', petkit_feeder_fresh_element_plugin);
 }
 
 function getTimestamp() {
@@ -122,12 +122,12 @@ class petkit_feeder_fresh_element_plugin {
         if (!devices) {
             return;
         } else if (this.deviceId !== undefined && devices != this.deviceId) {
-            this.log.warn('found you just ownd one feeder mini with deviceId: '+ devices);
+            this.log.warn('found you just ownd one feeder with deviceId: '+ devices);
             this.log.warn('which is not the same with the deviceId you set: '+ this.deviceId);
             this.log.warn('use '+ devices + ' instead of ' + this.deviceId);
             this.deviceId = devices;
         } else {
-            this.log('found you just ownd one feeder mini with deviceId: '+ devices);
+            this.log('found you just ownd one feeder with deviceId: '+ devices);
             this.deviceId = devices;
         }
         this.storagedConfig = this.readStoragedConfigFromFile();
