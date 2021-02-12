@@ -1,5 +1,5 @@
 {
-    "pluginAlias": "homebridge-petkit-feeder-fresh-element",
+    "pluginAlias": "petkit_feeder_fresh_element",
     "pluginType": "accessory",
     "headerDisplay": "",
     "footerDisplay": "",

@@ -61,7 +61,7 @@ module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     api = homebridge;
-    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'homebridge-petkit_feeder_fresh-element', petkit_feeder_fresh_element_plugin);
+    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'petkit_feeder_fresh-element', petkit_feeder_fresh_element_plugin);
 }
 
 function getTimestamp() {
@@ -331,7 +331,7 @@ class petkit_feeder_fresh_element_plugin {
             };
 
             if (this.deviceId) {
-                const filePath = api.user.storagePath() + '/petkit_feeder_mini.json';
+                const filePath = api.user.storagePath() + '/petkit_feeder_fresh_element.json';
 
                 if (callback) {
                     if (!fs.existsSync(filePath)) callback({});
@@ -363,7 +363,7 @@ class petkit_feeder_fresh_element_plugin {
         var result = false;
         try {
             if (this.deviceId) {
-                const filePath = api.user.storagePath() + '/petkit_feeder_mini.json';
+                const filePath = api.user.storagePath() + '/petkit_feeder_fresh_element.json';
                 var data = {};
                 data[this.deviceId] = this.storagedConfig;
                 const rawdata = JSON.stringify(data);
@@ -502,7 +502,7 @@ class petkit_feeder_fresh_element_plugin {
         });
 
         if (devices.length === 0) {
-            this.log.error('seems you does not owned a Petkit feeder mini, this plugin only works for Petkit feeder mini, sorry.');
+            this.log.error('seems you does not owned a Petkit feeder, this plugin only works for Petkit feeder, sorry.');
             return false;
         } else if (devices.length === 1) {
             this.log.debug(JSON.stringify(devices[0]));
@@ -513,7 +513,7 @@ class petkit_feeder_fresh_element_plugin {
                 const devicesIds = devices.map((device) => {
                     return { 'id': device.id, 'name': device.name };
                 });
-                this.log.error('seems that you ownd more than one feeder mini, but the device id you set is not here.');
+                this.log.error('seems that you ownd more than one feeder, but the device id you set is not here.');
                 this.log.error('do you mean one of this: ' + JSON.stringify(devicesIds));
                 return false;
             }
