@@ -49,7 +49,7 @@ const global_urls = Object.freeze({
 
 
 const min_amount = 0;                   // in meal(same in app)
-const max_amount = 10;                  // in meal(same in app)
+const max_amount = 30;                  // in meal(same in app)
 const min_desiccantLeftDays = 0;        // in day
 const max_desiccantLeftDays = 30;       // in day
 const min_batteryLevel = 0;             // level(same in app)
@@ -154,8 +154,8 @@ class petkit_feeder_fresh_element_plugin {
         }
         this.replaceHeadersetWithDefault();
 
-        // meal, same as petkit app unit. one share stands for 5g or 1/20 cup, ten meal most;
-        this.mealAmount = getConfigValue(this.storagedConfig['mealAmount'], 3);
+        // meal, same as petkit app unit 1/5 cup, twenty meal most;
+        this.mealAmount = getConfigValue(this.storagedConfig['mealAmount'], 9);
         if (this.mealAmount > max_amount) {
             this.log('mealAmount should not greater than ' + max_amount + ', use ' + max_amount + ' instead');
             this.mealAmount = max_amount;
@@ -780,7 +780,7 @@ class petkit_feeder_fresh_element_plugin {
     // date：20200920、time: 68400(-1 stand for current)、amount in app unit，1 for 5g, 10 is max(50g)
     async http_saveDailyFeed(amount, time) {
         const date = getDataString();
-        return await this.http_post(format(this.urls.saveDailyFeed, this.deviceId, date, time, amount * 5));
+        return await this.http_post(format(this.urls.saveDailyFeed, this.deviceId, date, time, amount * 20));
     }
 
     // key see support_settings.
