@@ -43,7 +43,10 @@ const global_urls = Object.freeze({
         'resetDesiccant': 'http://api.petkt.com/latest/feeder/desiccant_reset?deviceId={}',
         'updateSettings': 'http://api.petkt.com/latest/feeder/update?id={}&kv={}',
     }
+
 });
+
+
 
 const min_amount = 0;                   // in meal(same in app)
 const max_amount = 10;                  // in meal(same in app)
@@ -77,6 +80,7 @@ function getConfigValue(original, default_value) {
 }
 
 class petkit_feeder_fresh_element_plugin {
+
     constructor(log, config) {
         this.log = log;
         this.headers = {};
@@ -97,6 +101,7 @@ class petkit_feeder_fresh_element_plugin {
         };
 
         this.log('begin to initialize petkit feeder fresh element.');
+
 
         // location
         if (!config['location'] || !global_urls[config['location']]) {
@@ -496,10 +501,11 @@ class petkit_feeder_fresh_element_plugin {
 
         var devices = [];
         jsonObj.result.devices.forEach((item, index) => {
-            if (item.type == 'FeederMini' && item.data) {
+            if (item.type == 'Feeder' && item.data) {
                 devices.push(item.data);
             }
         });
+
 
         if (devices.length === 0) {
             this.log.error('seems you does not owned a Petkit feeder, this plugin only works for Petkit feeder, sorry.');

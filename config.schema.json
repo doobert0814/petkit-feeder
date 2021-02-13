@@ -95,6 +95,7 @@
                                 "X-TimezoneId",
                                 "X-Locale",
                                 "Accept",
+                                "id",
                                 "Accept-Language",
                                 "Accept-Encoding",
                                 "Content-Type",
