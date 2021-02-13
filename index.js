@@ -190,7 +190,6 @@ class petkit_feeder_fresh_element_plugin {
             'DesiccantLevel': getConfigValue(config['DesiccantLevel_name'], 'DesiccantLevel'),
             'ManualLock': getConfigValue(config['ManualLock_name'], 'ManualLock'),
             'LightMode': getConfigValue(config['LightMode_name'], 'LightMode'),
-            // 'Battery': getConfigValue(config['Battery_name'], 'Battery')
         };
 
         // other settings
@@ -282,26 +281,6 @@ class petkit_feeder_fresh_element_plugin {
                 .on('set', this.hb_lightModeStatus_set.bind(this));
             services.push(this.lightMode_service);
         }
-
-        // battery status
-        // service_name = this.service_names['Battery'];
-        // this.battery_status_service = new Service.BatteryService(service_name, service_name);
-        // this.battery_status_service.setCharacteristic(Characteristic.BatteryLevel, this.deviceDetailInfo['batteryPower']);
-        // this.battery_status_service.getCharacteristic(Characteristic.BatteryLevel)
-        //     .on('get', this.hb_deviceBatteryLevel_get.bind(this));
-        
-        // this.battery_status_service.setCharacteristic(Characteristic.ChargingState, (this.deviceDetailInfo['batteryStatus'] == 0 ?
-        //         Characteristic.ChargingState.CHARGING :
-        //         Characteristic.ChargingState.NOT_CHARGING));
-        // this.battery_status_service.getCharacteristic(Characteristic.ChargingState)
-        //     .on('get', this.hb_deviceChargingState_get.bind(this));
-
-        // this.battery_status_service.setCharacteristic(Characteristic.StatusLowBattery, (this.deviceDetailInfo['batteryPower'] <= 50 ?
-        //         Characteristic.StatusLowBattery.BATTERY_LEVEL_LOW :
-        //         Characteristic.StatusLowBattery.BATTERY_LEVEL_NORMAL));
-        // this.battery_status_service.getCharacteristic(Characteristic.StatusLowBattery)
-        //     .on('get', this.hb_deviceStatusLowBattery_get.bind(this));
-        // services.push(this.battery_status_service);
 
         // divice information
         this.info_service = new Service.AccessoryInformation();
@@ -562,13 +541,6 @@ class petkit_feeder_fresh_element_plugin {
             // 1 for statue ok, 0 for empty
             if (state['food'] !== undefined) this.deviceDetailInfo['food'] = state['food'] ? 1 : 0;
             this.log.debug('device food storage status is: ' + (this.deviceDetailInfo['food'] ? 'Ok' : 'Empty'));
-
-            // if (state['batteryPower'] !== undefined) this.deviceDetailInfo['batteryPower'] = state['batteryPower'] * batteryPersentPerLevel;
-            // this.log.debug('device battery level is: ' + this.deviceDetailInfo['batteryPower']);
-
-            // // 0 for charging mode, 1 for battery mode
-            // if (state['batteryStatus'] !== undefined) this.deviceDetailInfo['batteryStatus'] = state['batteryStatus'];
-            // this.log.debug('device battery status is: ' + (this.deviceDetailInfo['batteryStatus'] ? 'not charging' : 'charging'));
 
             if (state['desiccantLeftDays'] !== undefined) this.deviceDetailInfo['desiccantLeftDays'] = state['desiccantLeftDays'];
             this.log.debug('device desiccant remain: ' + (this.deviceDetailInfo['desiccantLeftDays'] + ' day(s)'));
@@ -980,29 +952,4 @@ class petkit_feeder_fresh_element_plugin {
             if (!this.fast_response) callback(null);
         });
     }
-
-    // hb_deviceBatteryLevel_get(callback) {
-    //     this.hb_handle_get('hb_deviceBatteryLevel_get', (results) => {
-    //         callback(null, this.deviceDetailInfo['batteryPower']);
-    //     });
-    // }
-
-    // hb_deviceChargingState_get(callback) {
-    //     this.hb_handle_get('hb_deviceChargingState_get', (results) => {
-    //         const status = (this.deviceDetailInfo['batteryStatus'] == 0 ?
-    //             Characteristic.ChargingState.CHARGING :
-    //             Characteristic.ChargingState.NOT_CHARGING);
-    //         callback(null, status);
-    //     });
-    // }
-
-    // hb_deviceStatusLowBattery_get(callback) {
-    //     this.hb_handle_get('hb_deviceStatusLowBattery_get', (results) => {
-    //         var status = Characteristic.StatusLowBattery.BATTERY_LEVEL_NORMAL;
-    //         if (this.deviceDetailInfo['batteryPower'] < 50) {
-    //             status = Characteristic.StatusLowBattery.BATTERY_LEVEL_LOW;
-    //         }
-    //         callback(null, status);
-    //     });
-    // }
 }
