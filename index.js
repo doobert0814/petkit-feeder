@@ -61,7 +61,7 @@ module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     api = homebridge;
-    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'petkit_feeder_fresh-element', petkit_feeder_fresh_element_plugin);
+    homebridge.registerAccessory('homebridge-petkit-feeder-fresh-element', 'petkit_feeder_fresh_element', petkit_feeder_fresh_element_plugin);
 }
 
 function getTimestamp() {
