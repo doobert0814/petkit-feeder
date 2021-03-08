@@ -52,13 +52,9 @@ const min_amount = 0;                   // in meal(same in app)
 const max_amount = 30;                  // in meal(same in app)
 const min_desiccantLeftDays = 0;        // in day
 const max_desiccantLeftDays = 30;       // in day
-// const min_batteryLevel = 0;             // level(same in app)
-// const max_batteryLevel = 4;             // level(same in app)
 const min_pollint_interval = 60;        // in second
 const max_pollint_interval = 3600;      // in second
 const min_fetch_status_interval = 10;   // in second
-
-// const batteryPersentPerLevel = 100 / max_batteryLevel;
 
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
@@ -92,8 +88,6 @@ class petkit_feeder_fresh_element_plugin {
         };
         this.deviceDetailInfo = {
             'food' : 0,
-            // 'batteryPower': 0,
-            // 'batteryStatus': 1,
             'desiccantLeftDays' : 0,
             'manualLock': 0,
             'lightMode': 0,
