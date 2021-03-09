@@ -302,8 +302,8 @@
                             "type": "flex",
                             "flex-flow": "row wrap",
                             "items": [
-                              "headers[].key",
-                              "headers[].value"
+                                "headers[].key",
+                                "headers[].value"
                             ]
                         }
                     ]

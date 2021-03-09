@@ -105,6 +105,8 @@ class petkit_feeder_fresh_element_plugin {
         this.location = config['location'];
         this.urls = global_urls[config['location']];
 
+        this.log('location check')
+
         // http request headers
         if (config['headers'] === undefined) {
             this.log.error('missing field in config.json file: headers.');
